@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		253E92CB36F0968AFB3AE347 /* Pods_Schoolert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFE5E82E6EB0BEF0831DDF3 /* Pods_Schoolert.framework */; };
 		EDE80E541EF5DE5300896153 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE80E531EF5DE5300896153 /* AppDelegate.swift */; };
 		EDE80E561EF5DE5300896153 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE80E551EF5DE5300896153 /* ViewController.swift */; };
 		EDE80E591EF5DE5300896153 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDE80E571EF5DE5300896153 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8AB44CCEB61D6E0C51FF58D3 /* Pods-Schoolert.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schoolert.release.xcconfig"; path = "Pods/Target Support Files/Pods-Schoolert/Pods-Schoolert.release.xcconfig"; sourceTree = "<group>"; };
+		BAFE5E82E6EB0BEF0831DDF3 /* Pods_Schoolert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Schoolert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF8ECC4CDCB083702B399060 /* Pods-Schoolert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schoolert.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Schoolert/Pods-Schoolert.debug.xcconfig"; sourceTree = "<group>"; };
 		EDE80E501EF5DE5300896153 /* Schoolert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schoolert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE80E531EF5DE5300896153 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDE80E551EF5DE5300896153 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				253E92CB36F0968AFB3AE347 /* Pods_Schoolert.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28CC34C9AECD302E7F2CB0DE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DF8ECC4CDCB083702B399060 /* Pods-Schoolert.debug.xcconfig */,
+				8AB44CCEB61D6E0C51FF58D3 /* Pods-Schoolert.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3E82733639ECDEECCF6C237F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BAFE5E82E6EB0BEF0831DDF3 /* Pods_Schoolert.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EDE80E471EF5DE5300896153 = {
 			isa = PBXGroup;
 			children = (
 				EDE80E521EF5DE5300896153 /* Schoolert */,
 				EDE80E511EF5DE5300896153 /* Products */,
+				28CC34C9AECD302E7F2CB0DE /* Pods */,
+				3E82733639ECDEECCF6C237F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EDE80E621EF5DE5300896153 /* Build configuration list for PBXNativeTarget "Schoolert" */;
 			buildPhases = (
+				86A4739D3681A2F29F38E52D /* [CP] Check Pods Manifest.lock */,
 				EDE80E4C1EF5DE5300896153 /* Sources */,
 				EDE80E4D1EF5DE5300896153 /* Frameworks */,
 				EDE80E4E1EF5DE5300896153 /* Resources */,
+				9FEA110D819DB29F49A81DB7 /* [CP] Embed Pods Frameworks */,
+				78793886AF10C003FE9BEC86 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		78793886AF10C003FE9BEC86 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Schoolert/Pods-Schoolert-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86A4739D3681A2F29F38E52D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9FEA110D819DB29F49A81DB7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Schoolert/Pods-Schoolert-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EDE80E4C1EF5DE5300896153 /* Sources */ = {
@@ -259,6 +334,7 @@
 		};
 		EDE80E631EF5DE5300896153 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF8ECC4CDCB083702B399060 /* Pods-Schoolert.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KYVYVR927G;
@@ -272,6 +348,7 @@
 		};
 		EDE80E641EF5DE5300896153 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8AB44CCEB61D6E0C51FF58D3 /* Pods-Schoolert.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = KYVYVR927G;
