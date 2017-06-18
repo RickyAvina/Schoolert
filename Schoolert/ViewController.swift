@@ -18,8 +18,6 @@ class ViewController: UIViewController {
     }
     
     private func returnHomePage(username: String, password: String) {
-        var homePage: Document?
-        
         Alamofire.request("https://whs-seq-ca.schoolloop.com/portal/login", method: .get).validate().responseData { (reponse) in
             
             if let data = reponse.result.value {
@@ -35,17 +33,33 @@ class ViewController: UIViewController {
                         if let data = reponse.result.value {
                             do {
                                 let html = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
-                                homePage = try SwiftSoup.parse(html!)
-                                let text = try homePage?.text()
-                                print("Doc:\n\n\(text)")
+                                let document = try SwiftSoup.parse(html!)
+                                self.useDocument(document: document)
                             } catch { print("Error") }
                         }
                     })
                 } catch { print("Error") }
             }
         }
-        
     }
+    
+    func useDocument(document: Document){
+        let classes = [String]()
+        
+        do {
+            let srcs: Elements = try document.select("a[data-track-link]")
+            let classesStrings: [String?] = srcs.array().map{ try? $0.attr("data-track-link").description }
+            print("Classes: \(classesStrings)")
+            // do something
+        } catch { print("Can't find classes!")  }
+    }
+    
+//    func useText(text: String){
+//        do {
+//            
+//        } catch { print("Can't find classes") }
+//        
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
