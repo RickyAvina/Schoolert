@@ -25,11 +25,11 @@ class ViewController: UIViewController {
                 do {
                     let html = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
                     let doc: Document = try SwiftSoup.parse(html!)
-                    let form_data_id = try! (doc.select("input[name=\"form_data_id\"]").first()?.attr("value"))!
+                    let form_data_id = try! (doc.select("input[name=\"form_data_id\"]").first()?.attr("value"))!    // this token is needed to prevent CSRF attacks
                     
-                    let parameters: Parameters = ["login_name": username, "password": password, "form_data_id": form_data_id, "redirect": "", "forward": "", "login_form_reverse": "", "sort": "", "reverse": "", "login_form_sort": "", "event_override": "login", "login_form_filter": "", "login_form_letter": "", "return_url": "", "login_form_page_index": "", "login_form_page_item_count": ""]
+                    let parameters: Parameters = ["login_name": username, "password": password, "form_data_id": form_data_id, "redirect": "", "forward": "", "login_form_reverse": "", "sort": "", "reverse": "", "login_form_sort": "", "event_override": "login", "login_form_filter": "", "login_form_letter": "", "return_url": "", "login_form_page_index": "", "login_form_page_item_count": ""]  // form data from first page
                     
-                    Alamofire.request("https://whs-seq-ca.schoolloop.com/portal/login?etarget=login_form", method: .post, parameters: parameters).validate().responseData(completionHandler: { (reponse) in
+                    Alamofire.request("https://whs-seq-ca.schoolloop.com/portal/login?etarget=login_form", method: .post, parameters: parameters).validate().responseData(completionHandler: { (reponse) in // post request to login
                         
                         if let data = reponse.result.value {
                             do {
@@ -63,40 +63,40 @@ class ViewController: UIViewController {
         for course in courses {
             if course.isValid() {
                 print("\(course.name!)\nPeriod Id: \(course.periodId!)\nGroup Id: \(course.groupId!)\n\n")
-                getGrades(course: course)
+                getGrades(course: course, completionHandler: { (grades) in
+                    if (grades != nil) && grades!.count > 0 {
+                        for grade in grades! {
+                            // do something with each grade point
+                        }
+                    }
+                })
             }
         }
     }
     
-    func getGrades(course: Course){
+    func getGrades(course: Course, completionHandler: @escaping ([Grade]?) -> Void) {
         Alamofire.request("https://whs-seq-ca.schoolloop.com/progress_report/progress_chart_data?id=1406781206449&period_id=\(course.periodId!)", method: .get).responseJSON { response in
             
             if let data = response.data {
-                let grades = [Grade]()
+                var grades = [Grade]()
                 
                 let json = JSON(data: data)
+                
                 for item in json.arrayValue {
                     let grade = Grade()
                     grade.percentage = item["percentage"].doubleValue
                     grade.trendScore = item["trendScore"].doubleValue
                     grade.date = item["date"].stringValue.detectDates?.first
+                    grades.append(grade)
                 }
-            }
+                
+                completionHandler(grades)
+            } else { completionHandler(nil) }
         }
     }
-    
-    //    func useText(text: String){
-    //        do {
-    //
-    //        } catch { print("Can't find classes") }
-    //
-    //    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
 }
