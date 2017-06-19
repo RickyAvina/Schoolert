@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        returnHomePage(username: "788120", password: "ea091900")
+        returnHomePage(username: "*****", password: "*****")
     }
     
     override func didReceiveMemoryWarning() {
