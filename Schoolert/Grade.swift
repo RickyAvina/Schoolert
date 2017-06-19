@@ -10,9 +10,9 @@ import Foundation
 
 class Grade {
     
-    var trendScore: Double
-    var date: Date
-    var percentage: Double
+    var trendScore: Double?
+    var date: Date?
+    var percentage: Double?
     
     init() {
         

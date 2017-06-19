@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		253E92CB36F0968AFB3AE347 /* Pods_Schoolert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFE5E82E6EB0BEF0831DDF3 /* Pods_Schoolert.framework */; };
 		ED4FE18D1EF776200028151B /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4FE18C1EF776200028151B /* Grade.swift */; };
+		ED4FE18F1EF77C010028151B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4FE18E1EF77C010028151B /* Extensions.swift */; };
 		EDE80E541EF5DE5300896153 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE80E531EF5DE5300896153 /* AppDelegate.swift */; };
 		EDE80E561EF5DE5300896153 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE80E551EF5DE5300896153 /* ViewController.swift */; };
 		EDE80E591EF5DE5300896153 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDE80E571EF5DE5300896153 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 		BAFE5E82E6EB0BEF0831DDF3 /* Pods_Schoolert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Schoolert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF8ECC4CDCB083702B399060 /* Pods-Schoolert.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Schoolert.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Schoolert/Pods-Schoolert.debug.xcconfig"; sourceTree = "<group>"; };
 		ED4FE18C1EF776200028151B /* Grade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		ED4FE18E1EF77C010028151B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EDE80E501EF5DE5300896153 /* Schoolert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schoolert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDE80E531EF5DE5300896153 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDE80E551EF5DE5300896153 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				EDE80E5C1EF5DE5300896153 /* LaunchScreen.storyboard */,
 				EDE80E5F1EF5DE5300896153 /* Info.plist */,
 				EDE80E671EF656C600896153 /* Course.swift */,
+				ED4FE18E1EF77C010028151B /* Extensions.swift */,
 			);
 			path = Schoolert;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED4FE18F1EF77C010028151B /* Extensions.swift in Sources */,
 				EDE80E681EF656C600896153 /* Course.swift in Sources */,
 				ED4FE18D1EF776200028151B /* Grade.swift in Sources */,
 				EDE80E561EF5DE5300896153 /* ViewController.swift in Sources */,

@@ -72,10 +72,14 @@ class ViewController: UIViewController {
         Alamofire.request("https://whs-seq-ca.schoolloop.com/progress_report/progress_chart_data?id=1406781206449&period_id=\(course.periodId!)", method: .get).responseJSON { response in
             
             if let data = response.data {
-                let grades = []
+                let grades = [Grade]()
+                
                 let json = JSON(data: data)
                 for item in json.arrayValue {
-                    let grade = item["percentage"]
+                    let grade = Grade()
+                    grade.percentage = item["percentage"].doubleValue
+                    grade.trendScore = item["trendScore"].doubleValue
+                    grade.date = item["date"].stringValue.detectDates?.first
                 }
             }
         }
@@ -92,5 +96,7 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 }
