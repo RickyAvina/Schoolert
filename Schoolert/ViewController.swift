@@ -9,6 +9,7 @@
 import UIKit
 import SwiftSoup
 import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
     
@@ -44,22 +45,48 @@ class ViewController: UIViewController {
     }
     
     func useDocument(document: Document){
-        let classes = [String]()
+        var courses = [Course]()
         
         do {
-            let srcs: Elements = try document.select("a[data-track-link]")
-            let classesStrings: [String?] = srcs.array().map{ try? $0.attr("data-track-link").description }
-            print("Classes: \(classesStrings)")
-            // do something
+            let srcs: Elements = try document.select("a[data-track-link='Academic Classroom']")
+            for src in srcs {
+                let course = Course()
+                course.name = try? src.text()
+                
+                let href: String = try! src.attr("href")
+                course.periodId = Int(href.components(separatedBy: "period_id=")[1].components(separatedBy: "&").first!)
+                course.groupId = Int(href.components(separatedBy: "group_id=")[1])
+                courses.append(course)
+            }
         } catch { print("Can't find classes!")  }
+        
+        for course in courses {
+            if course.isValid() {
+                print("\(course.name!)\nPeriod Id: \(course.periodId!)\nGroup Id: \(course.groupId!)\n\n")
+                getGrades(course: course)
+            }
+        }
     }
     
-//    func useText(text: String){
-//        do {
-//            
-//        } catch { print("Can't find classes") }
-//        
-//    }
+    func getGrades(course: Course){
+        Alamofire.request("https://whs-seq-ca.schoolloop.com/progress_report/progress_chart_data?id=1406781206449&period_id=\(course.periodId!)", method: .get).responseJSON { response in
+            
+            if let data = response.data {
+                let grades = []
+                let json = JSON(data: data)
+                for item in json.arrayValue {
+                    let grade = item["percentage"]
+                }
+            }
+        }
+    }
+    
+    //    func useText(text: String){
+    //        do {
+    //
+    //        } catch { print("Can't find classes") }
+    //
+    //    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
